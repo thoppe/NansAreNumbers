@@ -12,6 +12,9 @@ _NEG_NAN_BITS = float_to_binary_list(math.nan)
 class NAN:
     def __init__(self, x, create_from=None):
 
+        if isinstance(x, int):
+            x = float(x)
+
         # Keep a record of our parent for recursive creation
         if create_from:
             self.parent = create_from.parent
@@ -74,128 +77,114 @@ class NAN:
         """
 
         def cast(*args):
+
+            # Call the main function for side effects (and tests!)
+            null_result = func(*args)  # noqa: E841
+
             float_func = getattr(float, func.__name__)
-            result = float_func(*map(float, args))
+
+            if func.__name__ == "__round__":
+                result = float_func(float(args[0]), args[1])
+            else:
+                result = float_func(*map(float, args))
+
+            # Functions here return their result directly
+            if func.__name__ in ["__le__", "__lt__", "__gt__", "__ge__"]:
+                return result
+
+            # Otherwise return the result as the object itself
             return NAN(result, create_from=args[0])
 
         return cast
 
     @cast_down_compute_cast_up
-    def __pos__(self, x):
+    def __pos__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __neg__(self, x):
+    def __neg__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __abs__(self, x):
+    def __abs__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __invert__(self, x):
+    def __round__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __add__(self, x):
+    def __add__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __radd__(self, x):
+    def __radd__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __sub__(self, x):
+    def __sub__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rsub__(self, x):
+    def __rsub__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __mul__(self, x):
+    def __mul__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rmul__(self, x):
+    def __rmul__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __truediv__(self, x):
+    def __truediv__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rtruediv__(self, x):
+    def __rtruediv__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __floordiv__(self, x):
+    def __floordiv__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rfloordiv__(self, x):
+    def __rfloordiv__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __pow__(self, x):
+    def __pow__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rpow__(self, x):
+    def __rpow__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __divmod__(self, x):
+    def __mod__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rdivmod__(self, x):
+    def __rmod__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __mod__(self, x):
+    def __lt__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rmod__(self, x):
+    def __le__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __lshift__(self, x):
+    def __gt__(*args):
         pass
 
     @cast_down_compute_cast_up
-    def __rlshift__(self, x):
+    def __ge__(*args):
         pass
 
-    @cast_down_compute_cast_up
-    def __rshift__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __rrshift__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __and__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __rand__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __xor__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __rxor__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __or__(self, x):
-        pass
-
-    @cast_down_compute_cast_up
-    def __ror__(self, x):
-        pass
+    """
+    Divmod is not supported. Add it yourself.
+    """

@@ -16,25 +16,20 @@ with open("README.md") as FIN:
 setuptools.setup(
     name=package_name,
     packages=setuptools.find_packages(),
-
     # Include package data...
     include_package_data=True,
     description=description,
-    
     long_description=long_description,
     long_description_content_type="text/markdown",
     version=__version__,  # noqa: F821
     # The project's main homepage.
     url=f"https://github.com/thoppe/NansAreNumbers",
-    
     # Author details
     author="Travis Hoppe",
     author_email="travis.hoppe+{package_name}@gmail.com",
     # Choose your license
     license="CC-SA",
-    install_requires=[
-    ],
-
+    install_requires=[],
     classifiers=[
         # How mature is this project? Common values are
         #   3 - Alpha

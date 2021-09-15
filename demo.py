@@ -1,9 +1,14 @@
 from nans_are_numbers import NAN
 from pympler import asizeof
 
-x0, x1 = 1.3, 9.7
+x0, x1 = -1.3, 9.7
 
 q1, p1 = NAN(x0), NAN(x1)
+#print(float(q1))
+#print(float(abs(q1)))
+#q1 + p1
+print(q1 > p1)
+exit()
 
 
 print(q1.bitmask, len(str(q1)))
