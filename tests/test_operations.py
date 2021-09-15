@@ -107,7 +107,7 @@ def test_less_than():
 
 def test_greater_than():
     """
-    Test less than and less than equal to as floats and as NANs
+    Test greater than and less than equal to as floats and as NANs
     """
     assert (x > y) == (NAN(x) > NAN(y))
     assert (x >= y) == (NAN(x) >= NAN(y))
