@@ -36,10 +36,10 @@ class NAN:
 
     @property
     def bitmask(self):
-        '''
+        """
         Recursively hop down each "bit" in the representation and resolve
         if it ultimately represents a +NaN or -NaN.
-        '''
+        """
         return [self.ultimate_bit(x) for x in self.rep]
 
     def __float__(self):
@@ -155,15 +155,15 @@ class NAN:
     @cast_down_compute_cast_up
     def __mod__(self, x):
         pass
-    
+
     @cast_down_compute_cast_up
     def __rmod__(self, x):
         pass
-    
+
     @cast_down_compute_cast_up
     def __lshift__(self, x):
         pass
-    
+
     @cast_down_compute_cast_up
     def __rlshift__(self, x):
         pass

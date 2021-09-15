@@ -29,12 +29,13 @@ print(float(q2 / p2))
 print(float(q2 ** p2))
 print(float(-(q2 - p2)))
 
-
 q3, p3 = NAN(q2), NAN(p2)
 print(q3.bitmask, len(str(q3)))
 print(float(q3))
 print(float(q3 + p3))
 print(asizeof.asized(q3).size)
+
+exit()
 
 q4, p4 = NAN(q3), NAN(p3)
 print(q4.bitmask, len(str(q4)))
