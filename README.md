@@ -1,7 +1,8 @@
 # NaNsAreNumbers
 An esoteric data type built entirely of NaNs.
+[![PyPI version](https://badge.fury.io/py/hyperop.svg)](https://badge.fury.io/py/nans_are_numbers)
 
-## Installation and usage
+## Installation
 
     pip install nans_are_numbers
 
@@ -75,12 +76,16 @@ print( float(NAN(NAN(2.1)) / 0) ) # 10.74241047739471
 How deep can we get? It seems like you're only limited by memory. Each iteration grows (unsurprisingly) as a factor of 64. Real-world estimates of memory usage (using [`pympler.asizeof`](https://github.com/pympler/pympler)):
 
 | NAN depth  | Memory usage in bytes |
-| :--------- | ------------:      |
-| NAN0 (NaN) | 24                 |
-| NAN1       | 1,840              |
-| NAN2       | 58,040             |
-| NAN3       | 3,680,488          |
-| NAN4       | 235,471,960        |
-| NAN5       | 14  GB? (estimated) |
-| NAN6       | 898 GB? (estimated) |
-| NAN7       | 56  TB? (estimated) |
+| :--------- | ------------:         |
+| NAN0 (NaN) | 24                    |
+| NAN1       | 1,840                 |
+| NAN2       | 58,040                |
+| NAN3       | 3,680,488             | 
+| NAN4       | 235,471,960           |
+| NAN5       | 14  GB? (estimated)   |
+| NAN6       | 898 GB? (estimated)   |
+| NAN7       | 56  TB? (estimated)   |
+
+## Development
+
+Built with ❤️by [@metasemantic](https://twitter.com/metasemantic). Package is linted by [black](https://github.com/psf/black) and conforms to standards by [flake8](https://github.com/PyCQA/flake8). Pull requests accepted, but please provide tests so we remain at 100% coverage.
