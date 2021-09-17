@@ -16,84 +16,91 @@ def test_round():
     """
     Tests rounding value of floats vs a NANs and check equality.
     """
-    assert round(x, 3) == float(round(NAN(x), 3))
+    assert round(x, 3) == round(NAN(x), 3)
+
+
+def test_eq():
+    """
+    Tests __eq__ of float vs a NANs (without casting) and check equality.
+    """
+    assert x == NAN(x)
 
 
 def test_abs():
     """
     Tests absolute value of floats vs a NANs and check equality.
     """
-    assert abs(x) == float(abs(NAN(x)))
+    assert abs(x) == abs(NAN(x))
 
 
 def test_neg():
     """
     Tests __neg__ of a float vs a NANs and check equality.
     """
-    assert (-x) == float(-NAN(x))
+    assert (-x) == (-NAN(x))
 
 
 def test_pos():
     """
     Tests __pos__ of a float vs a NANs and check equality.
     """
-    assert (+x) == float(+NAN(x))
+    assert (+x) == (+NAN(x))
 
 
 def test_add():
     """
     Add two numbers together as floats then as NANs and check equality.
     """
-    assert x + y == float(NAN(x) + NAN(y))
-    assert x + y == float(x + NAN(y))
+    assert x + y == (NAN(x) + NAN(y))
+    assert x + y == (x + NAN(y))
 
 
 def test_sub():
     """
     Subtract two numbers together as floats then as NANs and check equality.
     """
-    assert x - y == float(NAN(x) - NAN(y))
-    assert x - y == float(x - NAN(y))
+    assert x - y == (NAN(x) - NAN(y))
+    assert x - y == (x - NAN(y))
 
 
 def test_div():
     """
     Divide two numbers together as floats then as NANs and check equality.
     """
-    assert x / y == float(NAN(x) / NAN(y))
-    assert x / y == float(x / NAN(y))
+    assert x / y == (NAN(x) / NAN(y))
+    assert x / y == (x / NAN(y))
 
 
 def test_floordiv():
     """
     Flor divide two numbers together as floats then as NANs and check equality.
     """
-    assert x // y == float(NAN(x) // NAN(y))
-    assert x // y == float(x // NAN(y))
+    assert x // y == (NAN(x) // NAN(y))
+    assert x // y == (x // NAN(y))
 
 
 def test_mul():
     """
     Multiply two numbers together as floats then as NANs and check equality.
     """
-    assert x * y == float(NAN(x) * NAN(y))
-    assert x * y == float(x * NAN(y))
+    assert x * y == (NAN(x) * NAN(y))
+    assert x * y == (x * NAN(y))
 
 
 def test_pow():
     """
     Exp two numbers together as floats then as NANs and check equality.
     """
-    assert x ** y == float(NAN(x) ** NAN(y))
-    assert x ** y == float(x ** NAN(y))
+    assert x ** y == (NAN(x) ** NAN(y))
+    assert x ** y == (x ** NAN(y))
 
 
 def test_mod():
     """
     Mod two numbers together as floats then as NANs and check equality.
     """
-    assert x % y == float(NAN(x) % NAN(y))
-    assert x % y == float(x % NAN(y))
+    assert x % y == (NAN(x) % NAN(y))
+    assert x % y == (x % NAN(y))
 
 
 def test_less_than():

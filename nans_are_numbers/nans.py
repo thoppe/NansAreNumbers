@@ -105,6 +105,10 @@ class NAN:
         return cast
 
     @cast_down_compute_cast_up
+    def __eq__(*args):
+        pass
+
+    @cast_down_compute_cast_up
     def __pos__(*args):
         pass
 
