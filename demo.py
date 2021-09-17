@@ -2,14 +2,18 @@ from nans_are_numbers import NAN
 from pympler import asizeof
 import math
 
-x, y = NAN(-1.3), NAN(9.7)
+x = NAN(-20.21)
 
-print(x == -1.3)
-print(x + 1)
-print(float(x))
-
+print(x == -20.21)
 print(x.bitmask)
 
+print(all(math.isnan(item) for item in x))
+
+x = NAN(NAN(2.7))
+print( float(NAN(NAN(2.1)) ** 3.2) )
+print(asizeof.asized(2.1).size)
+#print(x)
+exit()
 print(NAN(math.nan).bitmask)
 print(NAN(-math.nan).bitmask)
 
@@ -26,6 +30,7 @@ print(''.join(map(str,q.bitmask)))
 q = NAN(-20.21)
 print(''.join(map(str,q.bitmask)))
 
+print( float(NAN(NAN(2.1)) ** 3.2) )
 exit()
 
 
