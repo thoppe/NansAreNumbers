@@ -8,7 +8,7 @@ f_version = os.path.join(__local__, package_name, "_version.py")
 exec(open(f_version).read())
 
 # Get the long description from the relevant file
-description = "A data type built entirely of NaNs"
+description = "An esoteric data type built entirely of NaNs"
 
 with open("README.md") as FIN:
     long_description = FIN.read()

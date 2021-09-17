@@ -1,8 +1,7 @@
 # NaNsAreNumbers
 An esoteric data type built entirely of NaNs.
 
-
-[![PyPI version](https://badge.fury.io/py/hyperop.svg)](https://badge.fury.io/py/nans_are_numbers)
+[![PyPI version](https://badge.fury.io/py/nans-are-numbers.svg)](https://badge.fury.io/py/nans-are-numbers)
 
 ## Installation
 
