@@ -4,10 +4,27 @@ import math
 
 x, y = NAN(-1.3), NAN(9.7)
 
-print(x)
-
 print(x == -1.3)
-print(x == x)
+print(x + 1)
+print(float(x))
+
+print(x.bitmask)
+
+print(NAN(math.nan).bitmask)
+print(NAN(-math.nan).bitmask)
+
+q = NAN(math.inf)
+print(''.join(map(str,q.bitmask)))
+
+q = NAN(-math.inf)
+print(''.join(map(str,q.bitmask)))
+
+q = NAN(math.nan)
+print(''.join(map(str,q.bitmask)))
+
+
+q = NAN(-20.21)
+print(''.join(map(str,q.bitmask)))
 
 exit()
 
