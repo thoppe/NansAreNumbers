@@ -1,17 +1,23 @@
 from nans_are_numbers import NAN
 from pympler import asizeof
-
+import math
 x0, x1 = -1.3, 9.7
 
 print(dir(x0))
 
 q1, p1 = NAN(x0), NAN(x1)
+
+print(int(q1))
+exit()
 #print(float(q1))
 #print(float(abs(q1)))
 #q1 + p1
 
+q2, p2 = NAN(q1), NAN(p1)
 
-
+print(q1.bitmask, NAN(q1).bitmask)
+print(q2.rep)
+print(math.isnan(q1.rep[0]))
 exit()
 
 

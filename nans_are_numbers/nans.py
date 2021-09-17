@@ -48,9 +48,14 @@ class NAN:
     def __float__(self):
         return bin_to_float("".join(map(str, self.bitmask)))
 
+    def __int__(self):
+        return int(float(self))
+
     def __repr__(self):
-        # return f"[{len(self.rep)}:{type(self.rep[0])}{self.depth}]"
         return str(self.rep)
+
+    def __iter__(self):
+        yield from self.rep
 
     def get_parent_nans(self):
         if self.base_NAN:
@@ -79,17 +84,18 @@ class NAN:
         def cast(*args):
 
             # Call the main function for side effects (and tests!)
-            null_result = func(*args)  # noqa: E841
+            null_result = func(*args)  # noqa: F841
 
             float_func = getattr(float, func.__name__)
 
+            # Round *requires* the second argument to be an int
             if func.__name__ == "__round__":
                 result = float_func(float(args[0]), args[1])
             else:
                 result = float_func(*map(float, args))
 
-            # Functions like __le__ return different types (eg. bool or int)
-            # do this directly
+            # Functions like __le__ return different types
+            # (eg. bool or int). If not a float, return it directly
             if not isinstance(result, float):
                 return result
 
