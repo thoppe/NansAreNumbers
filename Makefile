@@ -11,7 +11,7 @@ coverage:
 
 lint:
 	black $(package_name) tests setup.py --line-length 80
-	flake8 $(package_name) tests --ignore=E203
+	flake8 $(package_name) tests #--ignore=E203
 
 clean:
 	rm -rvf cover $(package_name).egg-info/ htmlcov dist *~

@@ -88,8 +88,9 @@ class NAN:
             else:
                 result = float_func(*map(float, args))
 
-            # Functions here return their result directly
-            if func.__name__ in ["__le__", "__lt__", "__gt__", "__ge__"]:
+            # Functions like __le__ return different types (eg. bool or int)
+            # do this directly
+            if not isinstance(result, float):
                 return result
 
             # Otherwise return the result as the object itself

@@ -3,11 +3,15 @@ from pympler import asizeof
 
 x0, x1 = -1.3, 9.7
 
+print(dir(x0))
+
 q1, p1 = NAN(x0), NAN(x1)
 #print(float(q1))
 #print(float(abs(q1)))
 #q1 + p1
-print(q1 > p1)
+
+
+
 exit()
 
 
