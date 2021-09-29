@@ -1,53 +1,57 @@
 from nans_are_numbers import NAN
+from hypothesis import given, strategies as st
+import pytest
 
-# Static random floating point numbers for tests
-x = 0.9026374256857772
-y = -0.17507582380505715
-
-
-def test_str():
+@given(st.floats())
+def test_str(x):
     """
     Check string representation represents at 64 nan strings
     """
     assert str(NAN(x)).count("nan") == 64
 
 
-def test_round():
+@given(st.floats())
+def test_round(x):
     """
     Tests rounding value of floats vs a NANs and check equality.
     """
     assert round(x, 3) == round(NAN(x), 3)
 
 
-def test_eq():
+@given(st.floats())
+def test_eq(x):
     """
     Tests __eq__ of float vs a NANs (without casting) and check equality.
     """
     assert x == NAN(x)
 
 
-def test_abs():
+@given(st.floats())
+def test_abs(x):
     """
     Tests absolute value of floats vs a NANs and check equality.
     """
     assert abs(x) == abs(NAN(x))
 
 
-def test_neg():
+@given(st.floats())
+def test_neg(x):
     """
     Tests __neg__ of a float vs a NANs and check equality.
     """
     assert (-x) == (-NAN(x))
 
 
-def test_pos():
+@given(st.floats())
+def test_pos(x):
     """
     Tests __pos__ of a float vs a NANs and check equality.
     """
     assert (+x) == (+NAN(x))
 
 
-def test_add():
+@given(st.floats(), st.floats())
+def test_add(x, y):
     """
     Add two numbers together as floats then as NANs and check equality.
     """
@@ -55,7 +59,8 @@ def test_add():
     assert x + y == (x + NAN(y))
 
 
-def test_sub():
+@given(st.floats(), st.floats())
+def test_sub(x, y):
     """
     Subtract two numbers together as floats then as NANs and check equality.
     """
@@ -63,23 +68,34 @@ def test_sub():
     assert x - y == (x - NAN(y))
 
 
-def test_div():
+@given(st.floats(), st.floats())
+def test_div(x, y):
     """
     Divide two numbers together as floats then as NANs and check equality.
     """
-    assert x / y == (NAN(x) / NAN(y))
-    assert x / y == (x / NAN(y))
+    if y == 0:
+        with pytest.raises(ZeroDivisionError):
+            NAN(x) / NAN(y)
+    else:
+        assert x / y == (NAN(x) / NAN(y))
+        assert x / y == (x / NAN(y))
 
 
-def test_floordiv():
+@given(st.floats(), st.floats())
+def test_floordiv(x, y):
     """
-    Flor divide two numbers together as floats then as NANs and check equality.
+    Floor divide two numbers together as floats then as NANs and check equality.
     """
-    assert x // y == (NAN(x) // NAN(y))
-    assert x // y == (x // NAN(y))
+    if y == 0:
+        with pytest.raises(ZeroDivisionError):
+            NAN(x) // NAN(y)
+    else:
+        assert x // y == (NAN(x) // NAN(y))
+        assert x // y == (x // NAN(y))
 
 
-def test_mul():
+@given(st.floats(), st.floats())
+def test_mul(x, y):
     """
     Multiply two numbers together as floats then as NANs and check equality.
     """
@@ -87,7 +103,8 @@ def test_mul():
     assert x * y == (x * NAN(y))
 
 
-def test_pow():
+@given(st.floats(), st.floats())
+def test_pow(x, y):
     """
     Exp two numbers together as floats then as NANs and check equality.
     """
@@ -95,15 +112,21 @@ def test_pow():
     assert x ** y == (x ** NAN(y))
 
 
-def test_mod():
+@given(st.floats(), st.floats())
+def test_mod(x, y):
     """
     Mod two numbers together as floats then as NANs and check equality.
     """
-    assert x % y == (NAN(x) % NAN(y))
-    assert x % y == (x % NAN(y))
+    if y == 0:
+        with pytest.raises(ZeroDivisionError):
+             NAN(x) % NAN(y)
+    else:
+        assert x % y == (NAN(x) % NAN(y))
+        assert x % y == (x % NAN(y))
 
 
-def test_less_than():
+@given(st.floats(), st.floats())
+def test_less_than(x, y):
     """
     Test less than and less than equal to as floats and as NANs
     """
@@ -112,7 +135,8 @@ def test_less_than():
     assert (x <= x) == (NAN(x) <= NAN(x))
 
 
-def test_greater_than():
+@given(st.floats(), st.floats())
+def test_greater_than(x, y):
     """
     Test greater than and less than equal to as floats and as NANs
     """

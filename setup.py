@@ -48,5 +48,5 @@ setuptools.setup(
     # What does your project relate to?
     keywords=["art", "math"],
     test_suite="pytest",
-    tests_require=["pytest"],
+    tests_require=["pytest", "hypothesis"],
 )
