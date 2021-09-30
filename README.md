@@ -33,7 +33,7 @@ We can create a data type that acts like a float but it is built entirly of NaNs
 
 ``` python
 
-from nans_are_numbers
+from nans_are_numbers import NAN
 import math
 
 x = NAN(-20.21)
