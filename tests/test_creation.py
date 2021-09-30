@@ -1,7 +1,9 @@
 from nans_are_numbers import NAN
 import math
-from hypothesis import given, strategies as st
+from hypothesis import given, strategies as st, settings
 import pytest
+
+
 
 @given(st.integers())
 def test_NAN_from_int(z):
@@ -34,7 +36,10 @@ def test_NAN1(x):
     """
     q = NAN(x)
 
-    assert x == q
+    if math.isnan(x):
+        assert math.isnan(q)
+    else:
+         assert x == q
 
     assert all(math.isnan(z) for z in q)
 
@@ -49,7 +54,10 @@ def test_NAN2(x):
     """
     q = NAN(NAN(x))
 
-    assert x == q
+    if math.isnan(x):
+        assert math.isnan(q)
+    else:
+         assert x == q
 
     assert all(isinstance(z1, list) for z1 in q)
     assert all(all(math.isnan(z0) for z0 in z1) for z1 in q)
@@ -64,7 +72,9 @@ def test_NAN2_bitmask(x):
     assert NAN(x).bitmask == NAN(NAN(x)).bitmask
 
 
+@pytest.mark.slow
 @given(st.floats())
+@settings(deadline=500.0)
 def test_NAN3(x):
     """
     Create a NAN, three levels deep.
