@@ -28,7 +28,7 @@ If we make the mapping:
     -math.nan -> 1
      math.nan -> 0
 
-We can create a data type that acts like a float but it is built entirly of NaNs. Let's call it NAN, short for "NaNs Are Numbers". This library let's you manipulate these objects just like regular floats:
+We can create a data type that acts like a float but it is built entirly of NaNs. Let's call it NAN, short for "NaNs Are Numbers". This library lets you manipulate these objects just like regular floats:
 
 
 ``` python
