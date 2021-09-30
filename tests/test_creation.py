@@ -71,7 +71,6 @@ def test_NAN2_bitmask(x):
     """
     assert NAN(x).bitmask == NAN(NAN(x)).bitmask
 
-
 @pytest.mark.slow
 @given(st.floats())
 @settings(deadline=500.0)
@@ -85,7 +84,10 @@ def test_NAN3(x):
 
     q = NAN(NAN(NAN(x)))
 
-    assert x == q
+    if math.isnan(x):
+        assert math.isnan(q)
+    else:
+         assert x == q
 
     assert all(isinstance(z2, list) for z2 in q)
     assert all(all(isinstance(z1, list) for z1 in z2) for z2 in q)

@@ -64,7 +64,7 @@ def test_pos(x):
     Tests __pos__ of a float vs a NANs and check equality.
     """
     expected = (+x)
-    if math.isnan(x):
+    if math.isnan(expected):
         assert math.isnan(+NAN(x))
     else:
         assert expected == (+NAN(x))
