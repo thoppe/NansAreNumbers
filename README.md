@@ -90,3 +90,7 @@ How deep can we get? It seems like you're only limited by memory. Each iteration
 ## Development
 
 Built with ❤️by [@metasemantic](https://twitter.com/metasemantic). Package is linted by [black](https://github.com/psf/black) and conforms to standards by [flake8](https://github.com/PyCQA/flake8). Pull requests accepted, but please provide tests so we remain at 100% coverage.
+
+## Press & Discussion
+
++ [Hacker News](https://news.ycombinator.com/item?id=28691005)
