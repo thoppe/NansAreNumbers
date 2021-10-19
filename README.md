@@ -94,3 +94,4 @@ Built with ❤️by [@metasemantic](https://twitter.com/metasemantic). Package i
 ## Press & Discussion
 
 + [Hacker News](https://news.ycombinator.com/item?id=28691005)
++ [Python Weekly Issue #518](https://www.pythonweekly.com/)
